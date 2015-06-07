@@ -1,0 +1,39 @@
+{% extends base %}
+ 
+{% block content %}
+	<div class="row">
+		<h1 class="small-12">Liste des modèles 3D : </h1>
+	</div>
+	<div class="panel row">
+		
+		<div class="large-12 column">
+			<label>Selectionner un monument ou un objet : 
+				<select id="dropdown" name="nomModele">
+				{% for modele in modeles %}
+					<option value={{ modele.id }}>{{ modele.name }}</option>
+				{% endfor %}
+				</select>
+			</label>
+		</div>
+		
+		<div class="small-12 column">
+			<center class="row">
+				<a id="visualiser" class="small-12 medium-2 button">Visualiser</a>
+			</center>
+		</div>
+		
+	</div>
+	
+	<script>
+		var button = $("#visualiser");
+		button.click(function() {
+			var num = $("#dropdown  option:selected").val();
+			redirect = "//clementbardon.com/test/web/index.php/visualisation/"+num;
+			document.location.href = redirect;
+		});
+	</script>
+	
+{% endblock %}
+
+
+

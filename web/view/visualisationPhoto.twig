@@ -1,0 +1,23 @@
+{% extends base %}
+ 
+{% block content %}
+
+	<div class="row">
+		<h1 class="small-12">Visualisation photos : {{ infos.name }}</h1>
+	</div>
+
+	<div class="row panel">
+	<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
+	{% for cheminP in photos %}
+		<li>
+			<img class="th" src="../../{{ cheminP }}" onclick="window.open(this.src,'_blank','toolbar=0, location=0, directories=0, status=0, scrollbars=0, resizable=0, copyhistory=0, menuBar=0, width=900, height=850, left=0, top=0');"/>
+		</li>	
+		
+	{% endfor %}
+	</div>	<div class="row panel">
+<p class="small-12">
+			Pour revenir à la page précedente <a href={{ redirection }}>cliquez ici</a>
+		</p>
+	</div>
+
+{% endblock %}

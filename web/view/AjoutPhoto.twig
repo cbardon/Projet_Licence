@@ -1,0 +1,128 @@
+{% extends base %}
+ 
+{% block content %}
+	
+	<script src="{{ chemin }}../media/js/foundation/foundation.abide.js"></script>
+
+	<div class="row">
+		<h1 class="small-12">Ajouter des photos/données</h1>
+	</div>
+	
+	<div class="row panel">
+		<center class="small-12 column">
+			<div><b>Nom :</b> {{ infos.name }}</div>
+			<div><b>Date :</b>  {{ infos.date }}</div>
+			<div><b>Type :</b>  {{ infos.type }}</div>
+			<div><b>Ajouté par :</b>  {{ infos.prenom }} {{ infos.nom }}</div>
+		</center>
+	</div>
+	
+	<div class="row">
+		<h4 class="small-12 column">Ajouter des photos</h4>
+	</div>
+	<div class="row panel">
+		<form name="formPhoto" method="post" action="{{ chemin }}../../app/ajoutPhoto.php" data-abide enctype="multipart/form-data">
+		
+			<div class="small-12 medium-6 column">
+				<div class="row">
+					<p>Nombre de photo(s) ajoutée(s) : {{ statu.nbPhoto }}</p>
+					<div class="small-12 column">
+						<label>
+							Ajouter une photo (.png ou .jpg) : 
+							<input id="photo" type="file" name="photo" accept=".png,.jpg" required>
+						</label>
+						<small class="error">Veuillez selectioner une photo.</small>
+					</div>
+					
+					<h5 class="small-12 column">Information sur l'appareil photo</h5>
+					
+					<div class="small-12 column">
+						<label class="row collapse">
+							largueur du capteur : 
+							<div class="small-9 columns">
+							  <input id="largeur" placeholder="4272" type="text" name="largeur" required>
+							</div>
+							<div class="small-3 columns">
+							  <span class="postfix">px</span>
+							</div>
+						</label>
+						<small class="error">largueur du capteur obligatoire</small>
+					</div>
+					
+					<div class="small-12 column">
+						<label>
+							Format : 
+							<div class="row collapse">
+								<div class="small-5 columns">
+								  <input id="format1" placeholder="24" type="text" name="format1" required>
+								</div>
+								<div class="small-2 columns">
+								  <span class="postfix prefix">x</span>
+								</div>
+								<div class="small-5 columns">
+								  <input id="format2" placeholder="36" type="text" name="format2" required>
+								</div>
+							</div>
+						</label>
+						
+					</div>
+					
+					<div class="small-12 column">
+						<label>
+							Coefficient de convertion :  
+							<input id="coef" placeholder="1.0" type="text" name="coef" required>
+						</label>
+						<small class="error">Coefficient de convertion obligatoire</small>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="small-12 medium-6 column">
+				<div class="row">
+						<input class="button small-12 column" type="submit" value="Ajouter">
+							<input type="hidden" name="idModele" value={{ infos.id }}>
+							<input type="hidden" name="nomModele" value={{  infos.name }}>
+						{% if statu.nbPhoto != '0' %}
+						<a class="button small-12 column" href={{ app.url_generator.generate('visualisationPhoto',{idModele: infos.id}) }}>Visualiser</a>
+						<input class="button small-12 column" name="SupprimerPhoto" value="Supprimer" type="submit" onclick="self.location.href='http://clementbardon.com/test/web/index.php/SupprimerPhoto/{{ infos.id }}'"> 	
+						{% endif %}
+				</div>
+			</div>
+			
+		</form>
+	</div>
+	
+	<div class="row">
+		<h4 class="small-12 column">Ajouter des données</h4>
+	</div>
+	
+	<div class="row panel">
+		{% if statu.xml == false %}
+		<form name="formDonnee" method="post" action="{{ chemin }}../../app/ajoutDonnee.php" data-abide enctype="multipart/form-data">
+			<div class="row">
+				<input id="idDonnee" type="hidden" name="idDonnee" value={{ infos.id }}>
+				<div class="small-12 medium-6 column">
+					<label>
+						Ajouter les données (.xml) : 
+						<input id="donnee" type="file" name="donnee"  accept=".xml" required>
+					</label>
+					<small class="error">Veuillez selectioner un fichier.</small>
+				</div>
+				<input class="button small-12 medium-6 column" type="submit" value="Ajouter">
+			</div>
+		</form>
+		{% else %}
+			<h5 class="small-12">Données ajoutées : </h5>
+			<a class="button small-12 medium-5 column" href={{ app.url_generator.generate('visualisationDonnee',{idModele: infos.id}) }}>Visualiser</a>
+			<input class="button small-12 medium-5 column" name="Supprimer" value="Supprimer" type="submit" onclick="self.location.href='http://clementbardon.com/test/web/index.php/SupprimerDonnee/{{ infos.id }}'"> 	
+		{% endif %}
+	</div>
+	
+	<div class="row centrage">
+		<center>
+		
+			<a class="button" href={{ app.url_generator.generate('presentation') }}>Terminer</a>
+		</center>
+	</div>
+{% endblock %}

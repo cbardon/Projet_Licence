@@ -1,0 +1,49 @@
+{% extends base %}
+ 
+{% block content %}
+	<script src="../media/js/foundation/foundation.abide.js"></script>
+	<div class="row">
+		<h1 class="small-12">Contact</h1>
+	</div>
+	<div class="row">
+		<p class="small-0 medium-3 column"></p>
+		<form class="small-12 medium-6 column" data-abide method="get" action= "../../app/formmail.php" >
+			<input type=hidden name=Sujet value=Mail>
+			<div class="row">
+				<label>Votre Nom:
+					<input type=text name=Nom size=30 required>
+				</label>
+				<small class="error">Le nom est obligatoire.</small>
+			</div>
+			
+			<div class="row">
+				<label>Votre Email:
+					<input type=text name=email size=30 required>
+				</label>
+				<small class="error">L'email est obligatoire.</small>
+			</div>
+			
+			<div class="row">
+				<label>Sujet:
+				   <input type=text name=Objet size=30 required>
+				</label>
+				<small class="error">Le sujet est obligatoire.</small>
+			</div>
+				
+			<div class="row">
+				<label>Commentaires:<br>
+				  <textarea COLS=50 ROWS=6 name=Message required></textarea>
+				</label>
+				<small class="error">Le commentaire est obligatoire.</small>
+			</div>
+			</br>
+			
+			<div class="row">
+				<input class="small-12 medium-5 column button" type=submit value=Envoyer>
+				<p class="small-0 medium-2 column"></p>
+				<input class="small-12 medium-5 column button" type=reset value=Annuler>
+			</div>
+		</form>
+		<p class="small-0 medium-3 column"></p>
+	</div>
+{% endblock %}

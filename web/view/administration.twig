@@ -1,0 +1,55 @@
+{% extends base %}
+ 
+{% block content %}
+	<div class="row">
+		<h1 class="small-12 column">Administration</h1>
+	</div>
+	
+	<div class="row">
+		<h3 class="small-12">Ajout - Refus nouveaux modèles</h3>
+	</div>
+	
+	<form method="get" action="../../app/adminVisu.php">
+		<div class="row panel">
+			<label class="large-12">Selectionner un monument ou un objet à valider ou à refuser : 
+				<select id="dropdownVisualisation" name="idModele">
+				
+				{% for modele in modeles %}
+					<option value={{ modele.id }}>{{ modele.name }}</option>
+				{% endfor %}
+				
+				</select>
+			</label>
+			
+			<div class="row">
+				<center>
+					<input class="button" type="submit" value="Visualiser"/>
+				</center>
+			</div>
+			</div>	
+			</form>	
+			
+			
+	<div class="row">
+		<h3 class="small-12">Suppression modèles existants</h3>
+	</div>
+	<form method="get" action="../../app/adminSupprimer.php">
+		<div class="row panel">
+			<label class="small-12">Selectionner un monument ou un objet : 
+				<select id="dropdownSuppr" name="idModele">
+				{% for modele in modeles2 %}
+					<option value={{ modele.id }}>{{ modele.name }}</option>
+				{% endfor %}
+				</select>
+			</label>
+		
+		<div class="row">
+			<center>
+				<input class="button" type="submit" value="Supprimer"/>
+			</center>
+		</div>
+		</div>
+	</form>
+
+
+{% endblock %}

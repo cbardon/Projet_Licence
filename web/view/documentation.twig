@@ -1,0 +1,172 @@
+{% extends base %}
+ 
+{% block content %}
+	<script src="{{ chemin }}../media/js/foundation/foundation.magellan.js"></script>
+
+	<div class="row">
+		<h1 class="small-12">Documentation utilisateur</h1>
+	</div>
+
+	<div data-magellan-expedition="fixed">
+		<dl class="sub-nav">
+			<dd data-magellan-arrival="index">
+				<a href="#index">
+					Index
+				</a>
+			</dd>
+			<dd data-magellan-arrival="presentation">
+				<a href="#presentation">
+					Présentation
+				</a>
+			</dd>
+			<dd data-magellan-arrival="contact">
+				<a href="#contact">
+					Contact
+				</a>
+			</dd>
+			<dd data-magellan-arrival="inscription">
+				<a href="#inscription">
+					Inscription
+				</a>
+			</dd>
+			<dd data-magellan-arrival="authentification">
+				<a href="#authentification">
+					Authentification
+				</a>
+			</dd>
+			<dd data-magellan-arrival="connecte">
+				<a href="#connecte">
+					Connecté
+				</a>
+			</dd>
+			<dd data-magellan-arrival="modif">
+				<a href="#modif">
+					Modifier mot de passe
+				</a>
+			</dd>
+			<dd data-magellan-arrival="ajout">
+				<a href="#ajout">
+					Ajout modèle
+				</a>
+			</dd>	
+		</dl>
+	</div>
+
+	<div class="panel row centrage">
+		<p class="small-12">
+			PH3D est un site réalisé dans le cadre d'un projet tuteuré proposé par M. CHEVALDONNE et  C. BASCOUL 
+		<p/>
+		<p class="small-12">
+			Cette page vous servira à naviguer correctement tout au long du site.
+		</p>
+		<a name="index"></a>
+		<h3 data-magellan-destination="index" class="small-12">
+			Index
+		</h3>
+		<img class="th" src="{{ chemin }}../media/img/index.png" border="0" align="center" width=75% height=100%/> 
+		<br/>
+		<p class="small-12">
+			Voici la page d'accueil, comme vous pouvez le distinguer en haut de la page , vous avez un menu , ce menu contient pour le moment l'onglet Présentation , Documentation(içi présente) ainsi que l'onglet Connexion possédant les sous-menus Authentification et Inscription
+		</p>
+		<p class="small-12">
+			En bas de la page vous pourrez également vous diriger vers la page Contact pour d'éventuel questions aux administrateur
+		</p>
+		<a name="presentation"></a>
+		<h3 data-magellan-destination="presentation" class="small-12">
+			Présentation
+		</h3>
+		<img class="th" src="{{ chemin }}../media/img/presentation.png" border="0" align="center" width=75% height=100%/> 
+		<br/>
+		<p class="small-12">
+			Dans cette page présentaton vous pourrez , en choissisant un modèle parmis la liste présente, affichez le modèle 3D que vous souhaitez.
+		</p>
+		<a name="contact"></a>
+		<h3 data-magellan-destination="contact" class="small-12">
+			Contact
+		</h3>
+		<img class="th" src="{{ chemin }}../media/img/contact.png" border="0" align="center" width=75% height=100%/> 
+		<br/>
+		<p class="small-12">
+			Cette page vous permettra de communiquer avec un administrateur du site, vous n'avez qu'à remplir un formulaire vous demandant votre nom , votre mail , le sujet du mail et le corps du mail.
+		</p>
+		
+		<a name="inscription"></a>
+		<h3 data-magellan-destination="inscription" class="small-12">
+			Inscription
+		</h3>
+		<img class="th" src="{{ chemin }}../media/img/inscription.png" border="0" align="center" width=75% height=100%/>
+		<br/>
+		<p class="small-12">
+			Grâce à cette page vous allez pouvoir vous inscrire comme membre de la page.
+		</p>
+		<p class="small-12">
+			Veillez à mettre une adresse mail valide , que vous utilisez car vous recevrez un mail de confirmation sur cette dernière.
+		</p>
+		<p class="small-12">
+			Pour plus de sécurité, nous vous demandons de confirmation votre mot de passe pour éviter les erreurs de saisies, de plus lors de l'enregistrement dans la base de données votre mot de passe sera crypté , ce qui renforcera la sécurité de votre compte.
+		</p>
+		<p class="small-12">
+			Attention à bien remplir tout les champs du formulaire sinon la l'inscription ne pourra se faire.
+		</p>
+		<a name="authentification"></a>
+		<h3 data-magellan-destination="authentification" class="small-12">
+			Authentification
+		</h3>
+		<p class="small-12">
+			La page authentification vous permettra de connecter au site PH3D à l'aide du mail et de votre mot de passe saisie lors de votre inscription.
+		</p>
+		<img class="th" src="{{ chemin }}../media/img/authentification.png" border="0" align="center" width=75% height=100%/>
+		<br/> 
+	</div>
+	<div class="row">
+		<a name="connecte"></a>
+		<h1 data-magellan-destination="connecte" class="small-12">
+			Partie connecté
+		</h1>
+	</div>
+	<div class="panel row centrage">
+		<p class="small-12">
+			En cas de connexion reussi vous voilà arrivez de nouveau à la page index, mais cette page comporte quelques changements.
+		</p>
+		<img class="th" src="{{ chemin }}../media/img/index_connect.png" border="0" align="center" width=75% height=100%/> 
+		<br/>
+		<p class="small-12">
+			Votre prénom et votre nom apparaissent en haut à droite et également l'onglet Ajouter fait son apparition.
+		</p>
+		<p class="small-12">
+			Sous l'onglet avec prénom et nom, vous pouvez soit changer de mot de passe soit se deconnecter et revenir à la 1er page index
+		</p>
+		<a name="modif"></a>
+		<h3 data-magellan-destination="modif">
+			Modifier mot de passe
+		</h3>
+		<img class="th" src="{{ chemin }}../media/img/modif.png" border="0" align="center" width=75% height=100%/> 
+		<br/>
+		<p>
+			La page modification vous permettra de modifier votre mot de passe, vous n'avez qu'à renseigner votre ancien mot de passe puis celui souhaitez en le confirmant une nouvelle fois, en cas d'erreur votre ancien mot de passe sera gardé.
+		</p>
+		<a name="ajout"></a>
+		<h3 data-magellan-destination="ajout">
+			Ajout modèle
+		</h3>
+		<p>
+			L'onglet ajout va vous permettre d'ajouter un nouveau modèle avec ses photos , ses données et également en option ses latitudes et longitudes grâce à une Google Maps.
+		</p>
+		<p>
+			Cette page ajout se déroule en 2 partie, voici la 1er partie consistant à renseigner le nom du modèle , le modèle ,l'utilisation de la Google Maps reste falcutative en effet vous n'êtes pas obligé de renseigner les coordonnées de votre modèle.
+		</p>
+		<img class="th" src="{{ chemin }}../media/img/ajout.png" border="0" align="center" width=75% height=100%/> 
+		<br/>
+		<p>
+			La seconde partie consiste à ajouter des photos et des données.
+		</p>
+		<p>
+			Les photos seront associés à un fichier texte et seront ajouté à une liste que vous pourrez enregistrer à l'aide du bouton Terminer.
+		</p>
+		<p>
+			Idem pour les données mais ces derniers ne disposeront pas de fichier texte.
+		</p>
+		<img class="th" src="{{ chemin }}../media/img/ajoutPhoto.png" border="0" align="center" width=75% height=100%/>
+		<br/>
+	</div>
+{% endblock %}

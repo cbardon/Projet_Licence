@@ -1,0 +1,126 @@
+<html lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="{{ chemin }}../media/css/foundation.css" />
+	<link rel="stylesheet" href="{{ chemin }}../media/css/style.css" />
+	<script src="{{ chemin }}../media/js/vendor/jquery.js"></script>
+	<script src="{{ chemin }}../media/js/vendor/modernizr.js"></script>
+	<script src="{{ chemin }}../media/js/foundation/foundation.js"></script>
+	<script src="{{ chemin }}../media/js/foundation/foundation.topbar.js"></script>
+	<link rel="shortcut icon" href="{{ chemin }}../media/img/favicon.ico">
+	<title>{{title}}</title>
+</head>
+<body>
+    <nav class="top-bar" data-topbar role="navigation"> 
+		<ul class="title-area"> 
+			<li class="name"> 
+				<h1>
+					<a href="{{ app.url_generator.generate('index') }}"><img src="{{ chemin }}../media/img/logo.png" alt="logo" height=45 width=45/></a>
+				</h1> 
+			</li> 
+			<li class="toggle-topbar menu-icon">
+				<a href="#">
+					<span>Menu</span>
+				</a>
+			</li> 
+		</ul> 
+		<section class="top-bar-section">
+			<ul class="right"> 
+						
+				{% if admin == '1' %}
+				<li class="divider"></li> 
+              	<li>
+					<a href="{{ app.url_generator.generate('admin') }}">
+						Administration
+					</a>
+				</li>
+				{% endif %}
+				{% if nom != 'null' %}
+				<li class="divider"></li> 
+              	<li>
+						<a href="{{ app.url_generator.generate('ajout') }}">
+							Ajouter modèle
+						</a>
+				</li>
+				{% endif %}
+              	<li class="divider"></li> 
+				<li>
+					<a href="{{ app.url_generator.generate('presentation') }}">
+						Presentation
+					</a>
+				</li>
+					<li class="divider"></li>
+				<li> 
+					<a href="{{ app.url_generator.generate('doc') }}">
+						Documentation
+					</a> 
+				</li>
+				<li class="divider"></li>
+				<li class="has-dropdown">
+					{% if nom == 'null' %}
+					<a id="drop">
+						Connexion
+					</a>
+					<ul class="dropdown">
+						<li>
+							<a href="{{ app.url_generator.generate('authentification') }}">
+								Authentification
+							</a>
+						</li>
+						<li>
+							<a href="{{ app.url_generator.generate('inscription') }}">
+								Inscription
+							</a>
+						</li>
+					</ul>
+					{% else %}
+					<a id="drop">
+						Bonjour {{ prenom }} {{ nom }}
+					</a> 
+					<ul class="dropdown">
+						<li>
+							<a href="{{ app.url_generator.generate('deconnexion') }}">
+								Deconnexion
+							</a>
+						</li>
+						<li>
+							<a href="{{ app.url_generator.generate('modification') }}">
+								Changement mot de passe
+							</a>
+						</li>
+					</ul>
+					{% endif %}
+				</li>
+			</ul>
+		</section> 
+	</nav>
+	
+	<!--[if lte IE 10]>
+	<div id="ie">
+	<h1>Attention !</h1>
+	<h1>Les versions d'internet explorer inferieures à 11 ne sont pas compatibles avec l'affichage 3D qui est utilisé sur ce site.</h1>
+	<h1>Veuillez mettre à jour votre navigateur ou en utiliser un autre.</h1>
+	</div>
+	<![endif]-->
+	
+	{% block content %}{% endblock %}
+	
+	<footer class="row panel"> 
+		<div align="center">
+			Ce site a été réalisé dans le cadre d'un sujet tuteuré proposé par M. CHEVALDONNE et  C. BASCOUL
+		</div> 
+		<div align="center">
+			Produit par BARDON Clément et LEDUC Thomas
+		</div>
+		<div align="center">
+			<a href="{{ app.url_generator.generate('contact') }}">
+				Contact
+			</a>
+		</div>
+	</footer>
+	<script>
+		$(document).foundation();
+	</script>
+</body>
+</html>
+	

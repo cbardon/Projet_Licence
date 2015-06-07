@@ -1,0 +1,44 @@
+{% extends base %}
+ 
+{% block content %}
+	<script src="{{ chemin }}../media/js/three.min.js"></script>
+	<script src="{{ chemin }}../media/js/carrousel.js"></script>
+
+	<div class="row">
+		<h1 class="small-12">Patrimoine et Histoire 3D</h1>
+	</div>
+	<div id="pourCarrousel"  class="row centrage panel show-for-large-up">
+		<div id="carrousel" class="small-12 column"></div>
+	</div>
+	</br>
+	<div class="row">	
+		<p class="small-12 column centrage">
+			<strong>
+				Bienvenu sur PH3D !
+			</strong>
+		</p>
+		</br>
+		<p>
+			Grâce à ce site vous pourrez admirer des reproductions de monuments et d'objets en 3D.
+		</p>
+		<p>
+			Si c'est la première fois que vous venez sur ce site, vous pouvez lire la 
+			<a href="{{ app.url_generator.generate('doc') }}">
+				documentation
+			</a>
+			 afin de mieux comprendre le fonctionnement du site.
+		</p>
+		<p>
+			Cliquez 
+			<a href="{{ app.url_generator.generate('presentation') }}">
+				ici
+			</a>
+			 pour commencer à visualiser les modèles 3D.
+		</p>
+	</div>
+	<script>
+		initC({{img[0]|json_encode(constant('JSON_PRETTY_PRINT'))|raw}}, {{img[1]|json_encode(constant('JSON_PRETTY_PRINT'))|raw}}, {{img[2]|json_encode(constant('JSON_PRETTY_PRINT'))|raw}}, {{img[3]|json_encode(constant('JSON_PRETTY_PRINT'))|raw}} );
+		animateC();
+	</script>
+{% endblock %}
+

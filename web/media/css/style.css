@@ -1,0 +1,153 @@
+#wcont1b .panel 
+{ 
+	max-height: 150px; 
+	overflow-y: scroll; 
+}
+#wcont2b .panel 
+{ 
+	max-height: 150px; 
+	overflow-y: scroll; 
+}
+
+.centrage
+{
+	text-align: center;
+}
+
+IMG.displayed
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#3dmenu
+{
+	height: 200px;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Fixedn", sans-serif;
+    background-color: #fff;
+    color: #000;
+}
+div#bd {
+    position: relative;
+}
+div#gmap {
+    width: 100%;
+    height: 250px;
+}
+
+#listeComs 
+{ 
+height: 65%; 
+overflow-y: scroll; 
+}
+
+#formCom
+{
+	height: 20%;
+}
+
+.comName
+{
+	text-align: center;
+	background-color: rgba(200, 200, 200);
+	border-radius:5px;
+}
+
+#modele3d
+{
+	position:fixed;
+	top:0px;
+	left:0px;
+	z-index:-1;
+	height:auto;
+	width:auto;
+}
+
+#infoModele, fieldset
+{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#infoModele
+{
+    padding:5px;
+    width:auto;
+    max-width:50%;
+    height:auto;
+    border: solid 1px white;
+}
+
+#btntop
+{
+background-image:url("http://clementbardon.com/test/web/index.php/documentation");
+width:128px; /*largeur de votre image, 128px pour l'exemple*/
+height:128px; /*hauteur de votre image, 128px pour l'exemple*/
+position: fixed; /*fixed permet un positionnement par rapport à la fenetre du navigateur*/
+left:30px; /*décalage gauche de 30px*/
+bottom:35px; /*décalage par rapport au bas de page de 35px*/
+/*opacity:0.3;*/ /*eventuellement pour apporter une touche de discretion, dépend de votre image*/ 
+}
+
+
+/*La règle :hover est facultative, tout dépend du résultat attendu. l'exemple l'utilise. Je vous l'inclus au cas où vous en auriez besoin */
+#btntop:hover
+{
+background-image:url("http://clementbardon.com/test/web/index.php/documentation"); 
+width:128px; 
+height:128px; 
+position: fixed; 
+left:30px;
+bottom:35px;
+/*opacity:0.8;*/ /*eventuellement pour apporter un renforcement visuel au survol, dépend de votre image*/
+}
+
+#ie
+{
+    position:fixed;
+    height:100%;
+    width:100%;
+    z-index:100;
+    background-color: rgba(255, 255, 255);
+}
+
+#popUpButton
+{
+    position:absolute;
+    bottom:0px;
+    left:0px;
+}
+
+#move
+{
+    position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:5;
+}
+
+.dessusMove
+{
+    z-index:6;
+}
+
+#map-canvas 
+{
+    width: 100%;
+    height: 500px;
+}
+
+.popUpCss
+{
+    visibility: hidden; 
+    display: block;
+    opacity: 1;
+}
+
+.widescreen
+{
+    display: block;
+}

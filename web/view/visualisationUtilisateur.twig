@@ -1,0 +1,23 @@
+{% extends base %}
+ 
+{% block content %}
+
+	<div class="row">
+		<h1 class="small-12"><b style="text-transform: uppercase;">{{ infos.nom }}</b> <b>{{ infos.prenom }}</b></h1>
+	</div>
+
+	<div class="row">
+		<label>Profession : </label>
+		<p>{{ infos.prof }}</p>
+	</div>
+	<div class="row">
+		<label>Lieu de pravail : </label>
+		<p>{{ infos.lieu }}</p>
+	</div>	
+<div class="row panel">
+<p class="small-12">
+			Pour revenir à la page précedente <a href={{ redirection }}>cliquez ici</a>
+		</p>
+	</div>
+
+{% endblock %}

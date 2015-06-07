@@ -1,0 +1,25 @@
+{% extends base %}
+ 
+{% block content %}
+	<div class="row">
+		<h1 class="small-12">Authentification </h1>
+	</div>
+	
+	<div class="row">
+		<p class="small-1 medium-3 large-4 column"></p>
+		<div class="small-10 medium-6 large-4 column">
+			<form method="get" action="../../app/connect.php">
+				<fieldset>
+					<legend>Mail : </legend>
+					<input type="text" name="login" required>
+				</fieldset>
+				<fieldset>
+					<legend>Mot de passe : </legend>
+					<input type="password" name="motdepasse" required>
+				</fieldset>
+				<input class="button small-12" type="submit" name="submit" value="Se connecter"/>
+			</form>
+		</div>
+		<p class="small-1 medium-3 large-4 column"></p>
+	</div>
+{% endblock %}

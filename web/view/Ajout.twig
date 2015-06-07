@@ -1,0 +1,122 @@
+{% extends base %}
+ 
+{% block content %}
+	<script src="../media/js/presentationMap.js"></script>
+	<script src="../media/js/foundation/foundation.abide.js"></script>
+	<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	
+	<div class="row">
+		<h1 class="small-12">Ajouter un nouveau modèle 3D</h1>
+	</div>
+	<div class="row panel">
+		<form class="small-12 column" data-abide method="post" action="../../app/ajout.php" enctype="multipart/form-data">
+			
+			<div class="row">
+				
+				<div class="small-12 medium-6 column">
+					<label>
+						Nom du modèle :
+						<input placeholder="Les noms de modèles avec espaces sont interdits" type="text" required name="nomModele">
+					</label>
+					<small class="error">Le modèle doit avoir un nom.</small>
+				</div>
+			</div>
+			
+			<div class="row">
+				
+				<div class="small-12 medium-6 column">
+					<label>
+						Selectionner un type : 
+						<select id="dropdown" name="typeModele">
+						{% for type in types %}
+							<option value={{ type.id }}>{{ type.name }}</option>
+						{% endfor %}
+						</select>
+					</label>
+				</div>
+				
+				<div class="small-12 medium-6 column ">
+					<label>
+						Année :
+						<input type="text" name="dateModele" placeholder="1839 -- -200"required pattern="number">
+					</label>
+					<small class="error">L'année n'est pas correcte</small>
+				</div>
+				
+			</div>
+			
+			<div class="row">
+				
+				<div class="small-12 medium-6 column">
+					<label>
+						Ajouter un modèle (fichier au format obj):
+						<input required type="file"  accept=".obj" name="modeleFile" id="modeleFile"/>
+					</label>
+					<small class="error">Veuillez selectionner un modèle.</small>
+				</div>
+				
+				<div class="small-12 medium-6 column">
+					<label>
+						Ajouter une texture (image au format jpg ou png):
+						<input required type="file"  accept=".png,.jpg" name="modeleTexture" id="modeleTexture"/>
+					</label>
+					<small class="error">Veuillez selectionner une texture.</small>
+				</div>	
+				
+					<div class="small-12 medium-25 column">
+					<label>
+						Ajouter un fichier de parametre de la camera (fichier au format txt):
+						<input required type="file"  accept=".txt" name="parametreFile" id="parametreFile"/>
+					</label>
+					<small class="error">Veuillez selectionner un modèle.</small>
+				</div>
+		
+			</div>
+			
+		
+			<!--<div class="row">
+				<label class="small-12 column">
+					Description : 
+					<textarea COLS=50 ROWS=6 name="description"></textarea>
+				</label>
+			</div>-->
+		
+			<div class="row" id="hideform">
+				<center class="column">
+					<div id="bd">
+						<div id="gmap">
+						</div>
+						<div class="row">
+							<b>
+								<u>
+									latitude:
+								</u>
+							</b>
+							<input id="lat" name="lat" readonly>
+							<br/>
+							<b>
+								<u>
+									longitude:
+								</u>
+							</b> 
+							<input id="lon" name="lon" readonly>
+							<br/>
+						</div>
+						<div class="row">
+							<a class="button label" id="reset">
+								Reinitialiser
+							</a>
+						</div>
+					</div>
+				</center>
+			</div>
+			<br/>
+			<div class="row centrage">
+				<center class="column">
+					<input type="hidden" name="id" value={{ id }}>
+					<input class="button" type="submit" value={{ action }}>
+				</center>
+			</div>
+		</form>
+	</div>
+{% endblock %}

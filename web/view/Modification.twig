@@ -1,0 +1,53 @@
+{% extends base %}
+ 
+{% block content %}
+	<script src="../media/js/foundation/foundation.abide.js"></script>
+
+	<div class="row">
+		<h1 class="small-12">Modification mot de passe </h1>
+	</div>
+	<div class="panel row centrage">
+		<p class="small-0 medium-3 column"></p>
+		
+		<form class="small-12 medium-6 column" method="get" action="../../app/Modification.php" data-abide>
+			
+			<div>
+				<label>
+					Mot de passe actuel: 
+					<input type="password" name="passe" style="text-align:center;" required>
+				</label>
+				<small class="error">Veuillez entrer votre mot de passe.</small>
+			</div>
+			
+			<br/>
+			
+			<div>
+				<label>
+					Nouveau mot de passe: 
+					<input type="password" id="newPasse" name="newPasse" style="text-align:center;" required>
+				</label>
+				<small class="error">Veuillez entrer un nouveau mot de passe.</small>
+			</div>
+			
+			<br/>
+			
+			<div>
+				<label>
+					Confirmation du nouveau mot de passe: 
+					<input type="password" name="newPasse2" style="text-align:center;" data-equalto="newPasse" required>
+				</label>
+				<small class="error">Les deux mots de passe ne correspondent pas.</small>
+			</div>
+			
+			<br/>
+
+			<div class="row">
+				<input class="small-12 medium-5 column button" type="submit" value="Modifier">
+				<p class="small-0 medium-2 column"></p>
+				<input class="small-12 medium-5 column button" type="reset" value="Annuler">
+			</div>
+		</form>
+		<p class="small-0 medium-3 column"></p>
+	</div>
+{% endblock %}
+
