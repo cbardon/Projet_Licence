@@ -1,0 +1,189 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.8.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 10.246.16.11:3306
+-- Generation Time: Jun 25, 2015 at 03:52 PM
+-- Server version: 5.5.43-MariaDB-1~wheezy
+-- PHP Version: 5.3.3-7+squeeze15
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `clementbardon_c`
+--
+CREATE DATABASE `clementbardon_c` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `clementbardon_c`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `commentaire`
+--
+
+CREATE TABLE IF NOT EXISTS `commentaire` (
+  `idCommentaire` int(4) NOT NULL AUTO_INCREMENT,
+  `idModele` int(4) NOT NULL,
+  `idUtilisateur` int(4) NOT NULL,
+  `message` varchar(1500) NOT NULL,
+  `date` varchar(10) NOT NULL,
+  `visibilite` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idCommentaire`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=59 ;
+
+--
+-- Dumping data for table `commentaire`
+--
+
+INSERT INTO `commentaire` (`idCommentaire`, `idModele`, `idUtilisateur`, `message`, `date`, `visibilite`) VALUES
+(55, 170, 1, 'Le château n occupe alors qu une motte délimitée par un fossé, située approximativement au point le moins élevé du site, aux alentours du cimetière. À la suite de dissensions au sein de la famille comtale d''Auvergne, Léotoing fait partie des fiefs donnés par jugement royal à Robert Dauphin, comte de Clermont qui les lègue à son fils Hugues au début du xive siècle.', '2014-12-19', 0),
+(57, 170, 1, 'Le nom et la seigneurie de Léotoing tirent leurs origines d''une branche cadette de la famille de Mercœur.Dès la fin du xie siècle, Anthoine de « Lauthon » puis ses frères et ses héritiers imposent leur autorité sur de nombreux fiefs voisins. Vers 1420, la seigneurie se scinde et les cadets s''installent à Montgon qui devient le fief principal de la branche des Léotoing-Montgon.Le château n''occupe alors qu''une motte délimitée par un fossé, située approximativement au point le moins élevé du site, aux alentours du cimetière. À la suite de dissensions au sein de la famille comtale d''Auvergne, Léotoing fait partie des fiefs donnés par jugement royal à Robert Dauphin, comte de Clermont qui les lègue à son fils Hugues au début du xive siècle.', '2014-12-19', 0),
+(58, 170, 2, 'Le chapiteau leotoing se situe en Auvergne ', '2015-01-07', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `donnee`
+--
+
+CREATE TABLE IF NOT EXISTS `donnee` (
+  `idDonnee` int(4) NOT NULL AUTO_INCREMENT,
+  `idModele` int(4) NOT NULL,
+  `cheminD` varchar(200) NOT NULL,
+  PRIMARY KEY (`idDonnee`),
+  UNIQUE KEY `chemin` (`cheminD`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=54 ;
+
+--
+-- Dumping data for table `donnee`
+--
+
+INSERT INTO `donnee` (`idDonnee`, `idModele`, `cheminD`) VALUES
+(53, 184, 'media/modele/donnees/testParametre.xml'),
+(51, 170, 'media/modele/donnees/Chapiteau_Leotoing.xml');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `modele`
+--
+
+CREATE TABLE IF NOT EXISTS `modele` (
+  `idModele` int(4) NOT NULL AUTO_INCREMENT,
+  `nomModele` varchar(255) NOT NULL,
+  `cheminM` varchar(200) NOT NULL,
+  `cheminT` varchar(200) NOT NULL,
+  `cheminParametre` varchar(200) NOT NULL,
+  `latitude` varchar(20) DEFAULT NULL,
+  `longitude` varchar(20) DEFAULT NULL,
+  `enAttente` tinyint(1) NOT NULL DEFAULT '1',
+  `idUtilisateur` int(3) NOT NULL,
+  `dateModele` varchar(4) NOT NULL,
+  `idType` int(4) NOT NULL,
+  `description` varchar(6000) DEFAULT NULL,
+  PRIMARY KEY (`idModele`),
+  UNIQUE KEY `nomModele` (`nomModele`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=185 ;
+
+--
+-- Dumping data for table `modele`
+--
+
+INSERT INTO `modele` (`idModele`, `nomModele`, `cheminM`, `cheminT`, `cheminParametre`, `latitude`, `longitude`, `enAttente`, `idUtilisateur`, `dateModele`, `idType`, `description`) VALUES
+(170, 'Chapiteau_Leotoing', 'media/modele/modeles/Chapiteau_Leotoing.obj', 'media/modele/modeles/Chapiteau_Leotoing.png', 'media/modele/parametres/Chapiteau_Leotoing.txt', '45.361671561947084', '3.2203567028045654', 0, 1, '654', 3, ''),
+(181, 'supprimer', 'media/modele/modeles/supprimer.obj', 'media/modele/modeles/supprimer.png', 'media/modele/parametres/supprimer.txt', '45.693710616454496', '3.131103515625', 1, 2, '1414', 3, ''),
+(183, 'test', 'media/modele/modeles/test.obj', 'media/modele/modeles/test.png', 'media/modele/parametres/test.txt', '', '', 1, 2, '1700', 3, ''),
+(184, 'testParametre', 'media/modele/modeles/testParametre.obj', 'media/modele/modeles/testParametre.png', 'media/modele/parametres/testParametre.txt', '', '', 1, 2, '1414', 2, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `photo`
+--
+
+CREATE TABLE IF NOT EXISTS `photo` (
+  `idPhoto` int(4) NOT NULL AUTO_INCREMENT,
+  `idModele` int(4) NOT NULL,
+  `cheminP` varchar(200) NOT NULL,
+  `largeurCapteur` int(5) NOT NULL,
+  `format` varchar(7) NOT NULL,
+  `coefficientConversion` double NOT NULL,
+  `distanceFocal` int(20) NOT NULL,
+  PRIMARY KEY (`idPhoto`),
+  UNIQUE KEY `chemin` (`cheminP`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+
+--
+-- Dumping data for table `photo`
+--
+
+INSERT INTO `photo` (`idPhoto`, `idModele`, `cheminP`, `largeurCapteur`, `format`, `coefficientConversion`, `distanceFocal`) VALUES
+(3, 170, 'media/modele/photos/Chapiteau_Leotoing/00010.jpg', 4272, '24X36', 1.6, 0),
+(4, 181, 'media/modele/photos/supprimer/Diagramme de classe.png', 4722, '36X35', 1.2, 0),
+(5, 183, 'media/modele/photos/test/image (2).png', 1141, '36X12', 1.2, 0),
+(2, 170, 'media/modele/photos/Chapiteau_Leotoing/00006.jpg', 4272, '24X36', 1.6, 0),
+(1, 170, 'media/modele/photos/Chapiteau_Leotoing/00001.jpg', 4272, '24X36', 1.6, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `type`
+--
+
+CREATE TABLE IF NOT EXISTS `type` (
+  `idType` int(4) NOT NULL AUTO_INCREMENT,
+  `nomType` varchar(100) NOT NULL,
+  PRIMARY KEY (`idType`),
+  UNIQUE KEY `nomType` (`nomType`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `type`
+--
+
+INSERT INTO `type` (`idType`, `nomType`) VALUES
+(1, 'Autre'),
+(2, 'Monument'),
+(3, 'Objet');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `utilisateur`
+--
+
+CREATE TABLE IF NOT EXISTS `utilisateur` (
+  `idUtilisateur` int(4) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(100) NOT NULL,
+  `prenom` varchar(100) NOT NULL,
+  `mail` varchar(200) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `nbr_Connect` tinyint(1) NOT NULL,
+  `dates` date NOT NULL,
+  `admin` tinyint(1) NOT NULL,
+  `profession` varchar(200) NOT NULL,
+  `lieuTravail` varchar(200) NOT NULL,
+  PRIMARY KEY (`idUtilisateur`),
+  UNIQUE KEY `mail` (`mail`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`idUtilisateur`, `nom`, `prenom`, `mail`, `password`, `nbr_Connect`, `dates`, `admin`, `profession`, `lieuTravail`) VALUES
+(1, 'leduc', 'Thomas', 'thomaslmoi15@hotmail.fr', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0, '2014-12-19', 1, 'Etudiant', 'IUT Clermont Ferrand'),
+(2, 'Bardon', 'Cl�ment', 'c.bardon15@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0, '2015-05-30', 1, 'Etudiant', 'IUT Clermont Ferrand'),
+(10, 'nom', 'prenom', 'email@test.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0, '2014-12-19', 0, 'testeur', ''),
+(11, 'Fiafialoto', 'Hyacinthe', 'hyadino@gmail.com', '1345f76869f0ea1fb95416e63c3d0559725570cf', 0, '2014-12-18', 0, 'Etudiant', 'Uda Management');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
